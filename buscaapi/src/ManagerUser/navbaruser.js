@@ -6,8 +6,8 @@ const NavbarUser = () => {
   return(<>
   <nav>
        <h1 className='bg-primary'>List Users</h1> 
-    <div>
-       <h1>Company</h1>
+    <div className='container bg-danger'>
+       <h3>Company</h3>
     </div>
   </nav> 
     </>)
