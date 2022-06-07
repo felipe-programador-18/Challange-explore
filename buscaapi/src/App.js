@@ -3,10 +3,13 @@ import { FieltSear, GetData } from './ApiRandon/allmanage';
 import './App.css';
 import { ManageProvide } from './ManageContext/Context';
 import NavbarUser from './ManagerUser/navbaruser';
+import PagiLoaded from './ManagerUser/Pagination';
 import SeachBar from './ManagerUser/searchuser';
+import TypeUsers from './ManagerUser/typeusers';
 
 
-const UserFavorite = 'favorites'
+
+const UserFavorite = 'users'
 
 function App() {
   const peopleForPage = 25
@@ -26,7 +29,6 @@ function App() {
       setpeople(data.results)
       setloading(false)
       settotaly(Math.ceil(data.results / peopleForPage))
-
     } catch (error) {
       console.log('error here fetching', error)
     }
@@ -38,7 +40,6 @@ function App() {
    }
    setloading(true)
    setfound(false)
-
    const result = await GetData(results)
    if(!result){
      setfound(true)
@@ -48,6 +49,23 @@ function App() {
      settotaly(0)
    }
     setloading(false)
+ }
+
+ const careUpdate = (name) => {
+    const carepeople = [...userinter] 
+    const peopleIndex = userinter.indexOf(name)
+    if(peopleIndex >= 0){
+       carepeople.splice(peopleIndex,1)
+    }else{
+      carepeople.push(name)
+    }
+    window.localStorage.setItem(UserFavorite, JSON.stringify(carepeople))
+    setuserinter(carepeople)
+ }
+
+ const LoadUser = () =>{
+   const saveUser = JSON.parse(window.localStorage.getItem(UserFavorite))  || []
+   setuserinter(saveUser)
  }
 
 
@@ -62,12 +80,21 @@ function App() {
 
   
   
-  return (
+  return ( <ManageProvide  value={{allusers:userinter, updatingpeople:careUpdate }} >
     <div className="App">
     <NavbarUser/> 
-    <SeachBar/>     
+    <SeachBar Onsearch={LoadUser} />
+      {found ? (<p> error of search!!</p>) :
+     (<TypeUsers people={people}
+     loading={loading} 
+     page={page}
+     totaly={totaly}
+     setpage={setpage}
+     />
+      )}
+ 
     </div>
-  
+  </ManageProvide>
  );
 }
 
