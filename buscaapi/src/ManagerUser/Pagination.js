@@ -5,9 +5,9 @@ const PagiLoaded = (props) => {
     console.log('testing here ', page)
     return(<> 
     <div>
-        <button></button>
+        <button onClick={leftHandClick}  ></button>
           <div> {page} </div>
-        <button></button>
+        <button onClick={rightHandClick} ></button>
     </div>
               
     </>)
