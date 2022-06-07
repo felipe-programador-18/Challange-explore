@@ -1,6 +1,6 @@
 import React from 'react'
 import PagiLoaded from './Pagination'
-// users here yet import!!!
+import User from './users';
 
 
 const TypeUsers = (props) =>{
@@ -22,7 +22,6 @@ const TypeUsers = (props) =>{
   return( <div>
 
       <div>
-          <h1>Pagination Testing!!</h1>
           <PagiLoaded 
           page={page+1}
           totaly={totaly}
@@ -31,7 +30,20 @@ const TypeUsers = (props) =>{
           />
       </div>
             
-            {loading}
+            {loading ? (<>Loading ....  </>)  : 
+            
+            ( <>          
+              { people && people.map((results, index) => {
+               return ( <User key={index} results={results} />
+               )
+              })
+              }
+             </>
+              )
+            } 
 
   </div>)  
 }
+
+
+export default TypeUsers
