@@ -8,9 +8,11 @@ const NavbarUser = () => {
        <h1 className='bg-primary'>List Users</h1> 
     <div className='container bg-danger'>
        <h3>Company</h3>
+       {allusers}  📃
     </div>
   </nav> 
-    </>)
+  </>
+    )
 }
 
 
