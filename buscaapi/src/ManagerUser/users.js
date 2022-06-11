@@ -4,7 +4,7 @@ import AllManage from '../ManageContext/Context'
 
 const User = (props) => {
     const {allusers, updatingpeople} = useContext(AllManage)
-    const {results} =props
+    const {results} =props;
     const letter = allusers.includes(results.name) ?  "📜" : "📃" 
     
     const handUsersFav = () => {
@@ -13,9 +13,9 @@ const User = (props) => {
 
     return (<div className='container' >
               
-              <table class="table">
+  <table class="table">
   <thead>
-    <tr>
+      <tr>
       <th scope='col'>People</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
@@ -25,9 +25,6 @@ const User = (props) => {
       <th scope='col'>Endereço</th>
       <th scope='col'>Nacionalidade</th>
       <th scope='col'>ID</th>
-
-
-       
     </tr>
   </thead>
   <tbody> 
