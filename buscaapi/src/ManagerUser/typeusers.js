@@ -29,9 +29,7 @@ const TypeUsers = (props) =>{
           rightHandClick={OnrightHandling}
           />
       </div>
-            
-            {loading ? (<>Loading ....  </>)  : 
-            
+      {loading ? (<>Loading ....  </>)  :    
             ( <>          
               { people && people.map((results, index) => {
                return ( <User key={index} results={results} />
@@ -41,6 +39,8 @@ const TypeUsers = (props) =>{
              </>
               )
             } 
+
+
 
   </div>)  
 }
