@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import AllManage from '../ManageContext/Context'
+import CreateModal from './Modal';
 
 
 const User = (props) => {
@@ -41,7 +42,7 @@ const User = (props) => {
     </tr>
   </tbody>
 </table>
-  
+     <CreateModal/>
           <button onClick={handUsersFav} >{letter}</button>
     </div>)
 
