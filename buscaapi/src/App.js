@@ -3,15 +3,45 @@ import { FieltSear, GetData } from './ApiRandon/allmanage';
 import './App.css';
 import { ManageProvide } from './ManageContext/Context';
 import NavbarUser from './ManagerUser/navbaruser';
-import PagiLoaded from './ManagerUser/Pagination';
 import SeachBar from './ManagerUser/searchuser';
 import TypeUsers from './ManagerUser/typeusers';
-
+import Modal from 'react-modal';
 
 
 const UserFavorite = 'users'
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
 
 function App() {
+  
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+
+
+
   const peopleForPage = 25
   const [people, setpeople] = useState([])
   const [page, setpage] = useState(0)
@@ -83,6 +113,7 @@ function App() {
   return ( <ManageProvide  value={{allusers:userinter, updatingpeople:careUpdate }} >
     <div className="App">
     <NavbarUser/> 
+    
     <SeachBar Onsearch={LoadUser} />
       {found ? (<p> error of search!!</p>) :
      (<TypeUsers people={people}
@@ -92,6 +123,28 @@ function App() {
      setpage={setpage}
      />
       )}
+
+<div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <button onClick={closeModal}>close</button>
+        <div>I am a modal</div>
+        <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+        </form>
+      </Modal>
+    </div>
  
     </div>
   </ManageProvide>
