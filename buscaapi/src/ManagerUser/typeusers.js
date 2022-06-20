@@ -31,11 +31,12 @@ const TypeUsers = (props) =>{
       </div>
       {loading ? (<>Loading ....  </>)  :    
             ( <>          
-              { people && people.map((results, index) => {
-               return ( <User key={index} results={results} />
-               )
+              
+             { people && people.map((results, index) => {
+               return ( <User key={index} results={results} />)
               })
-              }
+             }
+        
              </>
               )
             } 
