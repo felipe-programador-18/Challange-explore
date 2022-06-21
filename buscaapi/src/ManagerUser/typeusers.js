@@ -33,7 +33,8 @@ const TypeUsers = (props) =>{
             ( <>          
               
              { people && people.map((results, index) => {
-               return ( <User key={index} results={results} />)
+               return (  
+                  <User key={index} results={results} /> )
               })
              }
         

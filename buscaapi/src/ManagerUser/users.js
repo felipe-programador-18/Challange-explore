@@ -1,4 +1,5 @@
 import React,{useContext} from 'react'
+import Modal from 'react-modal';
 import AllManage from '../ManageContext/Context'
 import CreateModal from './Modal';
 
@@ -13,7 +14,7 @@ const User = (props) => {
     }
 
     return (<div className='container' >
-              
+        
   <table class="table">
   <thead>
       <tr>
@@ -23,9 +24,7 @@ const User = (props) => {
       <th scope="col">Genero</th>
       <th scope='col'>Dt Nasc</th>
       <th scope='col'>Tel</th>
-      <th scope='col'>Endereço</th>
-      <th scope='col'>Nacionalidade</th>
-      <th scope='col'>ID</th>
+      
     </tr>
   </thead>
   <tbody> 
@@ -44,6 +43,7 @@ const User = (props) => {
 </table>
      <CreateModal/>
           <button onClick={handUsersFav} >{letter}</button>
+       
     </div>)
 
 }
